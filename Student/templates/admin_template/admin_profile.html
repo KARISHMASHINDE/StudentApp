@@ -1,8 +1,4 @@
-{% extends 'admin_template/base_template.html' %}
-
-{% block page_title %}
-    Update Profile
-{% endblock page_title %}
+{% extends 'base.html' %}
 
 {% block main_content %}
 
@@ -11,23 +7,21 @@
 <section class="content">
         <div class="container-fluid">
 
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row-md-7">
+                <div class="col-md-8">
                     <!-- general form elements -->
                     <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Update Profile</h3>
+                        <h4 class="card-title">Update Profile</h4>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form role="form" method="POST" action="{% url 'admin_profile_update' %}">
                         {% csrf_token %}
-
-                        
                                 {% comment %} Display Messages {% endcomment %}
                                 {% if messages %}
                                 <div class="form-group">
-                                <div class="col-12">
+                                <div class="col-10">
                                     {% for message in messages %}
                                     {% if message.tags == "error" %}
                                         <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
@@ -78,16 +72,12 @@
 
                         </div>
                         <!-- /.card-body -->
-
                         <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Update Profile</button>
                         </div>
                     </form>
                     </div>
-                    <!-- /.card -->
-
-                </div>
-            </div>
+        
 
         </div><!-- /.container-fluid -->
       </section>
