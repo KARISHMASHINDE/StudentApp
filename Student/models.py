@@ -32,11 +32,16 @@ class Courses(models.Model):
 
 class Students(models.Model):
     id = models.AutoField(primary_key=True)
-    admin = models.OneToOneField(CustomUser, on_delete = models.CASCADE)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
     gender = models.CharField(max_length=50)
-    address = models.TextField()
+    address = models.CharField(max_length=50)
     course_id = models.ForeignKey(Courses, on_delete=models.DO_NOTHING, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = models.Manager()
+    
+    def __str__(self):
+        return '{} {}'.format(self.first_name,self.last_name)
+        
 
