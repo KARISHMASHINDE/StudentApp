@@ -6,6 +6,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from Student.models import CustomUser,Courses,Students,Admin
 from Student.emailbackend import EmailBackEnd
+from .forms import AddStudentForm
+from django.views.generic import ListView,DetailView,UpdateView,CreateView,DeleteView
+
 
 
 def loginPage(request):
@@ -23,10 +26,7 @@ def Login(request):
             #return HttpResponse("Email: "+request.POST.get('email')+ " Password: "+request.POST.get('password'))
             if user_type == '1':
                 return redirect('admin_home')
-                
-            elif user_type == '2':
-                # return HttpResponse("Student Login")
-                return redirect('student_profile')
+
             else:
                 messages.error(request, "Invalid Login!")
                 return redirect('login')
@@ -108,20 +108,9 @@ def admin_home(request):
 
 
     # For Students
-    student_name_list=[]
-
-    students = Students.objects.all()
-    for student in students:
-        student_name_list.append(student.admin.first_name)
-
-
     context={
         "all_student_count": all_student_count,
         "course_count": course_count,
-        "course_name_list": course_name_list,
-        "subject_count_list": subject_count_list,
-        "student_count_list_in_course": student_count_list_in_course,
-        "student_name_list": student_name_list,
     }
     return render(request, "admin_template/home.html", context)
 
@@ -155,3 +144,42 @@ def admin_profile_update(request):
         except:
             messages.error(request, "Failed to Update Profile")
             return redirect('admin_profile')
+        
+        
+def add_course(request):
+    return render(request, "admin_template/add_course_template.html")
+
+
+def add_course_save(request):
+    if request.method != "POST":
+        messages.error(request, "Invalid Method!")
+        return redirect('add_course')
+    else:
+        course = request.POST.get('course')
+        try:
+            course_model = Courses(course_name=course)
+            course_model.save()
+            messages.success(request, "Course Added Successfully!")
+            return redirect('add_course')
+        except:
+            messages.error(request, "Failed to Add Course!")
+            return redirect('add_course')
+        
+
+class add_student(CreateView):
+    login_url = 'user/login/'
+    redirect_field_name = 'login'
+    model= Students
+    template_name = 'admin_template/add_student_template.html'
+    fields=['first_name','last_name','address','gender','course_id']
+
+
+class PostListView(ListView):
+    model = Students
+    template_name = 'student_template/home.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'students'
+    paginate_by =4
+    
+class PostDetailView(DetailView):
+    model = Students
+    template_name = 'student_detail.html' # <app>/<model>_<viewtype>.html
