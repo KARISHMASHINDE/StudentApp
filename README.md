@@ -7,13 +7,13 @@ This is a Simple Student Management System Developed for Educational Purpose usi
 Features of this Project
 Admin Users Can Do following Actions
 
-See Overall Summary Charts of Students, Courses,
-Manage Students/ Can Add Students
-Manage Course / Can Add Course
-See List of Student along with Detail
-Admin Login
-Admin DashBoard with Student and Course Count
-How to Install and Run this project?
+  1.See Overall Summary Charts of Students, Courses,
+  2.Manage Students/ Can Add Students
+  3.Manage Course / Can Add Course
+  4.See List of Student along with Detail
+  5.Admin Login
+  5.Admin DashBoard with Student and Course Count
+# How to Install and Run this project?
 # Pre-Requisites:
 
 --> Install Git Version Control [ https://git-scm.com/ ]
