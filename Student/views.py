@@ -1,5 +1,3 @@
-
-# from channels.auth import login, logout
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
@@ -8,6 +6,10 @@ from Student.models import CustomUser,Courses,Students,Admin
 from Student.emailbackend import EmailBackEnd
 from .forms import AddStudentForm
 from django.views.generic import ListView,DetailView,UpdateView,CreateView,DeleteView
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+)
 
 
 
@@ -166,8 +168,8 @@ def add_course_save(request):
             return redirect('add_course')
         
 
-class add_student(CreateView):
-    login_url = 'user/login/'
+class add_student(LoginRequiredMixin,CreateView):
+    login_url = '/user/login/'
     redirect_field_name = 'login'
     model= Students
     template_name = 'admin_template/add_student_template.html'
