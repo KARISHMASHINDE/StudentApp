@@ -46,5 +46,8 @@ class Students(models.Model):
     
     def __str__(self):
         return '{} {}'.format(self.first_name,self.last_name)
+    
+    def get_absolute_url(self):
+        return u'/user/login/' 
         
 
