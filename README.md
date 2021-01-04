@@ -27,7 +27,7 @@ Create a Folder where you want to save the project
 
 Create a Virtual Environment and Activate
 
-Install Virtual Environment First
+# Install Virtual Environment First
 $ pip install virtualenv
 
 --> Activate Virtual Environment
