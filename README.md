@@ -7,12 +7,18 @@ This is a Simple Student Management System Developed for Educational Purpose usi
 Features of this Project
 Admin Users Can Do following Actions
 
-  1.See Overall Summary Charts of Students, Courses,
+  1.See Overall Summary Charts of Students, Courses
+  
   2.Manage Students/ Can Add Students
+  
   3.Manage Course / Can Add Course
+  
   4.See List of Student along with Detail
+  
   5.Admin Login
-  5.Admin DashBoard with Student and Course Count
+  
+  6.Admin DashBoard with Student and Course Count
+  
 # How to Install and Run this project?
 # Pre-Requisites:
 
@@ -23,9 +29,9 @@ Admin Users Can Do following Actions
 --> Install Pip (Package Manager) [ https://pip.pypa.io/en/stable/installing/ ]
 
 # Installation
-Create a Folder where you want to save the project
+  1.Create a Folder where you want to save the project
 
-Create a Virtual Environment and Activate
+  2.Create a Virtual Environment and Activate
 
 # Install Virtual Environment First
 $ pip install virtualenv
@@ -40,6 +46,7 @@ $ git clone https://github.com/KARISHMASHINDE/StudentApp.git Then, Enter into th
 $ cd django-student-management-system
 
 Install Requirements from 'requirements.txt'
+
 $ pip install -r requirements.txt
 
 Add the hosts
