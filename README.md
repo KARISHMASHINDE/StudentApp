@@ -49,7 +49,7 @@ Install Requirements from 'requirements.txt'
 
 $ pip install -r requirements.txt
 
-Add the hosts
+Add the hosts ,
 Go to settings.py file (In this project setting.py file is present in "StudentManagement" Folder) Then, On allowed hosts, ALLOWED_HOSTS = [] Add [‘’]. ALLOWED_HOSTS = ['']
 
 Now Run Server $ python3 manage.py runserver
